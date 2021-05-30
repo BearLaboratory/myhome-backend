@@ -1,0 +1,25 @@
+server:
+  port: 9111
+  servlet:
+    context-path: /frontend
+spring:
+  application:
+    name: SERVICE-FRONTEND
+  profiles:
+    active: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+feign:
+  sentinel:
+    enabled: true
+  httpclient:
+    connection-timeout: 5000
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: error

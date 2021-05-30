@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <!--生产环境  -->
+    <springProfile name="prod">
+        <!--定义日志文件的存储地址,使用绝对路径-->
+        <property name="LOG_HOME" value="/usr/local/logs/servicegateway"/>
+        <!-- 按照每天生成日志文件 -->
+        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!--日志文件输出的文件名-->
+                <fileNamePattern>${LOG_HOME}/ucenter.%d{yyyy-MM-dd}.log</fileNamePattern>
+            </rollingPolicy>
+            <encoder>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            </encoder>
+        </appender>
+        <!--为了防止进程退出时，内存中的数据丢失，请加上此选项-->
+        <shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
+        <appender name="aliyun" class="com.aliyun.openservices.log.logback.LoghubAppender">
+            <!--必选项-->
+            <!-- 账号及网络配置 -->
+            <endpoint>cn-shanghai.log.aliyuncs.com</endpoint>
+            <accessKeyId></accessKeyId>
+            <accessKeySecret></accessKeySecret>
+            <!-- sls 项目配置 -->
+            <project>doraemon-all</project>
+            <logStore>service-gateway</logStore>
+            <!--必选项 (end)-->
+            <!-- 可选项 详见 '参数说明'-->
+            <totalSizeInBytes>104857600</totalSizeInBytes>
+            <maxBlockMs>0</maxBlockMs>
+            <ioThreadCount>8</ioThreadCount>
+            <batchSizeThresholdInBytes>524288</batchSizeThresholdInBytes>
+            <batchCountThreshold>4096</batchCountThreshold>
+            <lingerMs>2000</lingerMs>
+            <retries>10</retries>
+            <baseRetryBackoffMs>100</baseRetryBackoffMs>
+            <maxRetryBackoffMs>50000</maxRetryBackoffMs>
+            <encoder>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            </encoder>
+            <timeFormat>yyyy-MM-dd HH:mm:ss.SSS</timeFormat>
+            <timeZone>UTC</timeZone>
+        </appender>
+
+        <logger name="org.springframework" level="WARN" />
+
+        <root level="WARN">
+            <appender-ref ref="aliyun"/>
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+
+    <!--测试环境  -->
+    <springProfile name="test">
+        <!--定义日志文件的存储地址,使用绝对路径-->
+        <property name="LOG_HOME" value="/usr/local/logs/servicegateway"/>
+        <!-- 按照每天生成日志文件 -->
+        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!--日志文件输出的文件名-->
+                <fileNamePattern>${LOG_HOME}/ucenter.%d{yyyy-MM-dd}.log</fileNamePattern>
+            </rollingPolicy>
+            <encoder>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            </encoder>
+        </appender>
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+                <charset>utf8</charset>
+            </encoder>
+        </appender>
+
+        <logger name="org.springframework" level="WARN" />
+
+        <root level="WARN">
+            <appender-ref ref="FILE"/>
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <!--开发环境  -->
+    <springProfile name="dev">
+        <!-- Console 输出设置 -->
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+                <charset>utf8</charset>
+            </encoder>
+        </appender>
+
+        <root level="DEBUG">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+</configuration>

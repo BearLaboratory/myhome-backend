@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pro.dengyi.myhome.servicebackend.dao.PermissionDao">
+    <select id="selectCustomPage" resultType="pro.dengyi.myhome.servicebackend.dto.PermissionPageDto">
+        SELECT sys_permission.id,
+               sys_permission.parent_id,
+               sys_permission.type,
+               sys_permission.permission_name,
+               sys_permission.router_name,
+               sys_permission.router_path,
+               sys_permission.router_icon,
+               sys_permission.create_time,
+               sys_permission.update_time,
+               sys_permission.order_no
+        FROM sys_permission
+        WHERE parent_id IS NULL
+        ORDER BY order_no ASC
+
+    </select>
+    <select id="selectByParentId" resultType="pro.dengyi.myhome.servicebackend.dto.PermissionPageDto">
+
+        SELECT sys_permission.id,
+               sys_permission.parent_id,
+               sys_permission.type,
+               sys_permission.permission_name,
+               sys_permission.router_name,
+               sys_permission.router_path,
+               sys_permission.router_icon,
+               sys_permission.create_time,
+               sys_permission.update_time,
+               sys_permission.order_no
+        FROM sys_permission
+        WHERE parent_id = #{parentId}
+    </select>
+
+    <select id="selectFirstMenuPermissionForSuperAdmin"
+            resultType="pro.dengyi.myhome.servicebackend.dto.PermissionMenuDto">
+        SELECT sys_permission.id,
+               sys_permission.permission_name,
+               sys_permission.router_path,
+               sys_permission.create_time,
+               sys_permission.update_time,
+               sys_permission.parent_id,
+               sys_permission.router_name,
+               sys_permission.router_icon
+        FROM sys_permission
+        WHERE sys_permission.parent_id IS NULL
+          AND sys_permission.type = 1
+        ORDER BY sys_permission.order_no ASC
+    </select>
+
+    <select id="selectFirstButtonPermissionForSuperAdmin"
+            resultType="pro.dengyi.myhome.servicebackend.dto.PermissionPageDto">
+        SELECT sys_permission.id,
+               sys_permission.permission_name,
+               sys_permission.router_path,
+               sys_permission.create_time,
+               sys_permission.update_time,
+               sys_permission.parent_id,
+               sys_permission.router_name,
+               sys_permission.router_icon
+        FROM sys_permission
+        WHERE sys_permission.parent_id IS NULL
+          AND sys_permission.type = 2
+        ORDER BY sys_permission.order_no ASC
+    </select>
+    <select id="selectChildMenuPermissionByParentId"
+            resultType="pro.dengyi.myhome.servicebackend.dto.PermissionMenuDto">
+
+        SELECT sys_permission.id,
+               sys_permission.permission_name,
+               sys_permission.router_path,
+               sys_permission.create_time,
+               sys_permission.update_time,
+               sys_permission.router_name,
+               sys_permission.router_icon
+        FROM sys_permission
+        WHERE sys_permission.parent_id = #{parentId}
+          AND sys_permission.type = 1
+        ORDER BY sys_permission.order_no ASC
+    </select>
+
+    <select id="selectFirstMenuPermissionByUserId" resultType="pro.dengyi.myhome.servicebackend.dto.PermissionMenuDto">
+        SELECT sys_permission.id,
+               sys_permission.permission_name,
+               sys_permission.router_path,
+               sys_permission.create_time,
+               sys_permission.update_time,
+               sys_permission.parent_id,
+               sys_permission.router_name,
+               sys_permission.router_icon
+        FROM sys_user_role_middle
+                 LEFT JOIN sys_role_permission_middle
+                           ON sys_user_role_middle.role_id = sys_role_permission_middle.role_id
+                 LEFT JOIN sys_permission ON sys_role_permission_middle.Permission_id = sys_permission.id
+        WHERE sys_user_role_middle.user_id = #{userId}
+          AND sys_permission.parent_id IS NULL
+          AND sys_permission.type = 1
+        ORDER BY sys_permission.order_no ASC
+    </select>
+
+    <select id="selectFirstButtonPermissionByUserId" resultType="pro.dengyi.myhome.myhomemodel.business.backend.Permission">
+        SELECT sys_permission.id,
+               sys_permission.permission_name,
+               sys_permission.router_path,
+               sys_permission.create_time,
+               sys_permission.update_time,
+               sys_permission.parent_id,
+               sys_permission.router_name,
+               sys_permission.router_icon
+        FROM sys_user_role_middle
+                 LEFT JOIN sys_role_permission_middle
+                           ON sys_user_role_middle.role_id = sys_role_permission_middle.role_id
+                 LEFT JOIN sys_permission ON sys_role_permission_middle.Permission_id = sys_permission.id
+        WHERE sys_user_role_middle.user_id = #{userId}
+          AND sys_permission.parent_id IS NULL
+          AND sys_permission.type = 2
+        ORDER BY sys_permission.order_no ASC
+    </select>
+    <select id="selectChildButtonPermissionByParentId"
+            resultType="pro.dengyi.myhome.myhomemodel.business.backend.Permission">
+        SELECT sys_permission.id,
+               sys_permission.permission_name,
+               sys_permission.router_path,
+               sys_permission.create_time,
+               sys_permission.update_time,
+               sys_permission.router_name,
+               sys_permission.router_icon
+        FROM sys_permission
+        WHERE sys_permission.parent_id = #{parentId}
+          AND sys_permission.type = 2
+        ORDER BY sys_permission.order_no ASC
+    </select>
+    <select id="selectAllSubByParentId" resultType="pro.dengyi.myhome.servicebackend.dto.PermissionMenuDto">
+        SELECT
+        sys_permission.id,
+        sys_permission.parent_id,
+        sys_permission.type,
+        sys_permission.permission_name,
+        sys_permission.router_name,
+        sys_permission.router_path,
+        sys_permission.router_icon,
+        sys_permission.order_no
+        FROM
+        sys_permission
+        WHERE
+        1 = 1
+        <if test="parentId==null">
+            AND parent_id IS NULL
+        </if>
+        <if test="parentId!=null">
+            AND parent_id=#{parentId}
+        </if>
+        ORDER BY
+        order_no ASC
+    </select>
+</mapper>

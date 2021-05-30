@@ -1,0 +1,25 @@
+server:
+  port: 9222
+  servlet:
+    context-path: /backend
+spring:
+  application:
+    name: SERVICE-BACKEND
+  profiles:
+    active: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+feign:
+  sentinel:
+    enabled: true
+  httpclient:
+    connection-timeout: 5000
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: error

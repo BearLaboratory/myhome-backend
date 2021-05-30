@@ -1,0 +1,39 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: SERVICE-GATEWAY
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: SERVICE-FRONTEND
+          uri: lb://SERVICE-FRONTEND
+          predicates:
+            - Path=/frontend/**
+        - id: SERVICE-BACKEND
+          uri: lb://SERVICE-BACKEND
+          predicates:
+            - Path=/backend/**
+  profiles:
+    active: dev
+#    全局配置
+global:
+  exclude-path:
+    - /frontend/user/loginByPhone
+    - /frontend/validCode/getCodeByPhone
+    - /backend/sysUser/login
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: error
+

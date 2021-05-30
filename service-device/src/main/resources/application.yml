@@ -1,0 +1,25 @@
+server:
+  port: 8333
+  servlet:
+    context-path: /admin/ucenter
+spring:
+  application:
+    name: SERVICE-UCENTER
+  profiles:
+    active: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+feign:
+  sentinel:
+    enabled: true
+  httpclient:
+    connection-timeout: 5000
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: error
