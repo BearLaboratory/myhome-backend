@@ -3,7 +3,7 @@
 <mapper namespace="pro.dengyi.myhome.servicebackend.dao.UserDao">
     <select id="customPage" resultType="pro.dengyi.myhome.servicebackend.dto.UserDto">
         SELECT
-        sys_user."id",
+        sys_user.id,
         sys_user.phone,
         sys_user.name,
         sys_role.id as roleId,
@@ -15,15 +15,15 @@
         sys_user.email
         FROM
         sys_user
-        LEFT JOIN sys_user_role_middle ON sys_user."id" = sys_user_role_middle.user_id
-        LEFT JOIN sys_role ON sys_user_role_middle.role_id = sys_role."id"
+        LEFT JOIN sys_user_role_middle ON sys_user.id = sys_user_role_middle.user_id
+        LEFT JOIN sys_role ON sys_user_role_middle.role_id = sys_role.id
         WHERE
         1=1
         <if test="pageVo.phone!=null and pageVo.phone!= ''">
             AND sys_user.phone = #{pageVo.phone}
         </if>
-        <if test="pageVo.nickName!=null and pageVo.nickName!= ''">
-            AND sys_user.name like concat(#{pageVo.nickName},'%')
+        <if test="pageVo.name!=null and pageVo.name!= ''">
+            AND sys_user.name like concat(#{pageVo.name},'%')
         </if>
         order by sys_user.create_time desc
     </select>

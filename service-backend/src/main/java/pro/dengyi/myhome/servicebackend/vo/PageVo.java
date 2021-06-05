@@ -11,5 +11,5 @@ public class PageVo {
     private Integer pageNumber;
     private Integer pageSize;
     private String phone;
-    private String nickName;
+    private String name;
 }

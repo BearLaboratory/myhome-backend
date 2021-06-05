@@ -59,13 +59,6 @@ public class UserController {
         return new DataResponse<>(ResponseEnum.SUCCESS, permissionDto);
     }
 
-    @ApiOperation("新增或修改管理后台用户,修改用户时密码为空则不修改密码")
-    @PostMapping("/addOrUpdateUser")
-    public BaseResponse addUser(@RequestBody @Validated User user) {
-        userService.addOrUpdateUser(user);
-        return new BaseResponse(ResponseEnum.SUCCESS);
-    }
-
 
     @ApiOperation("网关——查询用户的所有权限集合一位数组")
     @GetMapping("/getAllPermissionsList")
@@ -74,13 +67,26 @@ public class UserController {
     }
 
 
-
     @SentinelResource(value = "user", blockHandler = "demoHandler")
     @ApiOperation("条件分页查询用户")
     @GetMapping("/page")
     public DataResponse<IPage<UserDto>> page(PageVo pageVo) {
         IPage<UserDto> pageResponse = userService.page(pageVo);
         return new DataResponse<>(ResponseEnum.SUCCESS, pageResponse);
+    }
+
+    @ApiOperation("新增或修改管理后台用户,修改用户时密码为空则不修改密码")
+    @PostMapping("/addOrUpdateUser")
+    public BaseResponse addOrUpdateUser(@RequestBody @Validated User user) {
+        userService.addOrUpdateUser(user);
+        return new BaseResponse(ResponseEnum.SUCCESS);
+    }
+
+    @ApiOperation("删除用户")
+    @PostMapping("/delUser")
+    public BaseResponse delUser(@RequestBody @Validated User user) {
+        userService.delUser(user);
+        return new BaseResponse(ResponseEnum.SUCCESS);
     }
 
 

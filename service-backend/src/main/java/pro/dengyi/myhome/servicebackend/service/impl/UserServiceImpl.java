@@ -90,7 +90,10 @@ public class UserServiceImpl implements UserService {
                 }
                 //新增用户
                 sysUser.setPassword(PasswordUtil.encodePassword(sysUser.getPassword()));
+                sysUser.setAvatar(DEFAULT_AVATAR);
                 sysUser.setIsSuperAdmin(false);
+                sysUser.setIsPlatformManager(true);
+                sysUser.setIsDeveloper(false);
                 sysUser.setCreateTime(new Date());
                 sysUser.setUpdateTime(new Date());
                 sysUserDao.insert(sysUser);
@@ -179,6 +182,18 @@ public class UserServiceImpl implements UserService {
     public IPage<UserDto> page(PageVo pageVo) {
         IPage<UserDto> iPage = new Page<>(pageVo.getPageNumber() == null ? 1 : pageVo.getPageNumber(), pageVo.getPageSize() == null ? 10 : pageVo.getPageSize());
         return sysUserDao.customPage(iPage, pageVo);
+    }
+
+    @Transactional
+    @Override
+    public void delUser(User user) {
+        User userSaved = sysUserDao.selectById(user.getId());
+        if (userSaved.getIsSuperAdmin()) {
+            // 超级管理员不允许删除
+            throw new BusinessException(ResponseEnum.PARAM_ERROR);
+        }
+        //普通用户直接删除
+        sysUserDao.deleteById(userSaved.getId());
     }
 
     /**

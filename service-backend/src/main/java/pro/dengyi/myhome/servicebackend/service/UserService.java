@@ -52,4 +52,5 @@ public interface UserService {
 
     IPage<UserDto> page(PageVo pageVo);
 
+    void delUser(User user);
 }
