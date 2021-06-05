@@ -14,6 +14,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * swagger配置文件
+ * <p>
+ * 仅在dev环境下生效
  *
  * @author bear
  */
@@ -38,13 +40,13 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 // 页面标题
-                .title("哆啦A梦API文档")
+                .title("MyHome——API文档")
                 // 创建人
                 .contact(new Contact("邓艺", "www.dengyi.pro", "dengyi@dengyi.pro"))
                 // 版本号
                 .version("1.0")
                 // 描述
-                .description("用户中心API文档")
+                .description("管理后台API文档")
                 .build();
     }
 }

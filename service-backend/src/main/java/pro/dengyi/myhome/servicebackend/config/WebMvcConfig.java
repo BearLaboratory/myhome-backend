@@ -1,4 +1,5 @@
 package pro.dengyi.myhome.servicebackend.config;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -8,6 +9,8 @@ import pro.dengyi.myhome.servicebackend.interceptors.LoginInterceptor;
 
 /**
  * web基础配置
+ * <p>
+ * 网关中统一进行了跨域配置，单个项目中千万不要配置，否则会导致跨域
  *
  * @author BLab
  */

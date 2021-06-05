@@ -56,11 +56,11 @@ public class Device {
     @ApiModelProperty(value = "是否发布")
     private Boolean publish;
 
-    @ApiModelProperty(value = "所属产品ID")
+    @ApiModelProperty(value = "所属分类ID")
     private String productId;
 
     @ApiModelProperty(value = "开发者ID")
-    private String devUserId;
+    private String developerId;
 
     @ApiModelProperty(value = "设备密钥")
     private String deviceSecret;

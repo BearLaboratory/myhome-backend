@@ -2,7 +2,6 @@ package pro.dengyi.myhome.servicebackend.controller;
 
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,7 +13,6 @@ import pro.dengyi.myhome.common.response.DataResponse;
 import pro.dengyi.myhome.common.response.ResponseEnum;
 import pro.dengyi.myhome.myhomemodel.business.backend.User;
 import pro.dengyi.myhome.servicebackend.dto.PermissionDto;
-import pro.dengyi.myhome.servicebackend.dto.PermissionMenuDto;
 import pro.dengyi.myhome.servicebackend.dto.UserDto;
 import pro.dengyi.myhome.servicebackend.service.UserService;
 import pro.dengyi.myhome.servicebackend.vo.LoginVo;
@@ -61,7 +59,7 @@ public class UserController {
         return new DataResponse<>(ResponseEnum.SUCCESS, permissionDto);
     }
 
-    @ApiOperation("新增或修改用户,修改用户时密码为空则不修改密码")
+    @ApiOperation("新增或修改管理后台用户,修改用户时密码为空则不修改密码")
     @PostMapping("/addOrUpdateUser")
     public BaseResponse addUser(@RequestBody @Validated User user) {
         userService.addOrUpdateUser(user);
@@ -74,6 +72,8 @@ public class UserController {
     public List<String> getAllPermissionsList() {
         return userService.getAllPermissionsList();
     }
+
+
 
     @SentinelResource(value = "user", blockHandler = "demoHandler")
     @ApiOperation("条件分页查询用户")

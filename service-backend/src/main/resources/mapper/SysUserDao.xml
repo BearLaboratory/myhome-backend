@@ -5,7 +5,7 @@
         SELECT
         sys_user."id",
         sys_user.phone,
-        sys_user.nick_name,
+        sys_user.name,
         sys_role.id as roleId,
         sys_user.create_time,
         sys_user.update_time,
@@ -23,8 +23,8 @@
             AND sys_user.phone = #{pageVo.phone}
         </if>
         <if test="pageVo.nickName!=null and pageVo.nickName!= ''">
-            AND sys_user.nick_name like concat(#{pageVo.nickName},'%')
+            AND sys_user.name like concat(#{pageVo.nickName},'%')
         </if>
-        order by  sys_user.create_time desc
+        order by sys_user.create_time desc
     </select>
 </mapper>

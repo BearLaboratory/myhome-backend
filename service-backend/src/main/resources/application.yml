@@ -7,6 +7,9 @@ spring:
     name: SERVICE-BACKEND
   profiles:
     active: dev
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
 management:
   endpoints:
     web:

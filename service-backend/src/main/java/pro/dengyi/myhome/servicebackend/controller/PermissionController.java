@@ -43,7 +43,7 @@ public class PermissionController {
     }
 
 
-    @ApiOperation("根据父Id查询所有子级权限")
+    @ApiOperation("根据父Id查询所有子级权限及子权限是否还有子级")
     @GetMapping("/getByParentId")
     public DataResponse<List<PermissionPageDto>> getByParentId(String parentId) {
         List<PermissionPageDto> list = permissionService.getByParentId(parentId);
@@ -56,6 +56,8 @@ public class PermissionController {
         List<PermissionMenuDto> tree = permissionService.totalPermissionTree();
         return new DataResponse<>(ResponseEnum.SUCCESS, tree);
     }
+
+
 
 
 }
