@@ -25,6 +25,8 @@ global:
     - /frontend/user/loginByPhone
     - /frontend/validCode/getCodeByPhone
     - /backend/sysUser/login
+    - /backend/sysUser/getUserInfo
+    - /backend/sysUser/getPermissionTree
 management:
   endpoints:
     web:

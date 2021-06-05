@@ -33,7 +33,8 @@ public enum ResponseEnum {
     CODE_EXPIRE(false, 11005, "验证码已过期"),
     CODE_ERROR(false, 11006, "验证码错误"),
     CODE_FLOW_LIMIT(false, 11007, "请求验证码太频繁，请稍后重试"),
-    HOSPITAL_EXIST(false, 11006, "bdId已存在，请检查后重新保存"),
+    HOSPITAL_EXIST(false, 11008, "bdId已存在，请检查后重新保存"),
+    ROLE_USED(false, 11009, "角色已被使用不能删除"),
 
 
     /**

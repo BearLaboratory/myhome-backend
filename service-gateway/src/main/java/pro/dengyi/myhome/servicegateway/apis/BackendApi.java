@@ -3,7 +3,7 @@ package pro.dengyi.myhome.servicegateway.apis;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.context.annotation.Primary;
 import org.springframework.web.bind.annotation.GetMapping;
-import pro.dengyi.myhome.servicegateway.apis.impl.UcenterApiImpl;
+import pro.dengyi.myhome.servicegateway.apis.impl.BackendApiImpl;
 
 import java.util.List;
 
@@ -14,15 +14,15 @@ import java.util.List;
  * @version v1.0
  */
 @Primary
-@FeignClient(value = "SERVICE-UCENTER", fallback = UcenterApiImpl.class)
-public interface UcenterApi {
+@FeignClient(value = "SERVICE-BACKEND", fallback = BackendApiImpl.class)
+public interface BackendApi {
 
     /**
      * 查询用户所有权限List集合，只查询集合
      *
      * @return
      */
-    @GetMapping("/admin/ucenter/sysUser/getPermissionsList")
+    @GetMapping("/backend/sysUser/getAllPermissionsList")
     List<String> getAllPermissionList();
 
 

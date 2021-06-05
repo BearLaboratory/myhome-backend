@@ -108,7 +108,7 @@ public class RoleServiceImpl implements RoleService {
         List<UserRoleMiddle> sysUserRoleMiddles = userRoleMiddleDao.selectList(qr);
         //如果在使用则不能删除
         if (!CollectionUtils.isEmpty(sysUserRoleMiddles)) {
-            throw new BusinessException(ResponseEnum.USER_EXIST);
+            throw new BusinessException(ResponseEnum.ROLE_USED);
         }
         //未使用，则可删除
         roleDao.deleteById(Role.getId());

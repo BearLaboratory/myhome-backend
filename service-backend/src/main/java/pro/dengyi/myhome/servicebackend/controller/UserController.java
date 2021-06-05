@@ -60,7 +60,7 @@ public class UserController {
     }
 
 
-    @ApiOperation("网关——查询用户的所有权限集合一位数组")
+    @ApiOperation("网关——查询用户的所有权限集合一维数组")
     @GetMapping("/getAllPermissionsList")
     public List<String> getAllPermissionsList() {
         return userService.getAllPermissionsList();

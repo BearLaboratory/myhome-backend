@@ -172,8 +172,10 @@ public class UserServiceImpl implements UserService {
             List<Permission> firstMenuList = permissionDao.selectFirstButtonPermissionForSuperAdmin();
             iteAllButtonString(firstMenuList, stringList);
         } else {
-            //todo 查询普通用户
-
+            List<PermissionMenuDto> firstList = permissionDao.selectFirstMenuPermissionByUserId(SysUserHolder.getUserId());
+            iteAllMenuString(firstList, stringList);
+            List<Permission> buttonPermissions = permissionDao.selectFirstButtonPermissionByUserId(SysUserHolder.getUserId());
+            iteAllButtonString(buttonPermissions, stringList);
         }
         return stringList;
     }

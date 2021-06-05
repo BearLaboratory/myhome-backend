@@ -17,7 +17,7 @@ import pro.dengyi.myhome.myhomeutil.UserTokenUtil;
 import pro.dengyi.myhome.myhomeutil.holder.GatewayTokenHolder;
 import pro.dengyi.myhome.myhomeutil.holder.SysUserHolderModel;
 import pro.dengyi.myhome.myhomeutil.holder.UserHolderModel;
-import pro.dengyi.myhome.servicegateway.apis.UcenterApi;
+import pro.dengyi.myhome.servicegateway.apis.BackendApi;
 import pro.dengyi.myhome.servicegateway.properties.GlobalProperties;
 import reactor.core.publisher.Mono;
 
@@ -32,7 +32,7 @@ import java.util.List;
 @Component
 public class LoginFilter implements GlobalFilter, Ordered {
     @Autowired
-    private UcenterApi ucenterApi;
+    private BackendApi backendApi;
     @Autowired
     private GlobalProperties globalProperties;
 
@@ -61,24 +61,25 @@ public class LoginFilter implements GlobalFilter, Ordered {
                 }
 
             } else {
+                SysUserHolderModel sysUserHolderModel = null;
                 try {
-                    SysUserHolderModel sysUserHolderModel = SysUserTokenUtil.decToken(token);
-                    if (sysUserHolderModel.getIsSuperAdmin()) {
-                        return chain.filter(exchange);
-                    } else {
-                        //缓存到到本地给feign用
-                        GatewayTokenHolder.setToken(token);
-                        List<String> allPermissionList = ucenterApi.getAllPermissionList();
-                        GatewayTokenHolder.remove();
-                        if (allPermissionList.contains(request.getURI().getPath())) {
-                            return chain.filter(exchange);
-                        } else {
-                            throw new BusinessException(ResponseEnum.NO_PERMISSION);
-                        }
-                    }
+                    sysUserHolderModel = SysUserTokenUtil.decToken(token);
                 } catch (Exception e) {
                     //解析token的时的异常为token解析异常，有可能是过期也有可能是伪造token。直接抛给前端重新登录就行了
                     throw new BusinessException(ResponseEnum.TOKEN_ERROR);
+                }
+                if (sysUserHolderModel.getIsSuperAdmin()) {
+                    return chain.filter(exchange);
+                } else {
+                    //缓存到到本地给feign用
+                    GatewayTokenHolder.setToken(token);
+                    List<String> allPermissionList = backendApi.getAllPermissionList();
+                    GatewayTokenHolder.remove();
+                    if (allPermissionList.contains(request.getURI().getPath())) {
+                        return chain.filter(exchange);
+                    } else {
+                        throw new BusinessException(ResponseEnum.NO_PERMISSION);
+                    }
                 }
 
             }
