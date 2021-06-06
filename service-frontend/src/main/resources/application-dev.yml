@@ -54,7 +54,7 @@ mybatis-plus:
 
 #短信配置
 dayu:
-  access-key-id: LTAI5t5tbJ6N6nUus5e3YPEk
-  access-key-secret: d7CtvfFmhFOawigqSvcptp4vpgDbnt
-  template-code: SMS_111795121
-  sign-name: 邓艺
+  access-key-id: xxxxxxxxx
+  access-key-secret: xxxxxxxx
+  template-code: xxxxxxxxx
+  sign-name: xxxxx
