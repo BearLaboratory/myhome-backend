@@ -11,42 +11,44 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.dengyi.myhome.common.response.BaseResponse;
 import pro.dengyi.myhome.common.response.DataResponse;
 import pro.dengyi.myhome.common.response.ResponseEnum;
-import pro.dengyi.myhome.myhomemodel.business.device.Device;
-import pro.dengyi.myhome.myhomemodel.business.vo.DevicePageVo;
-import pro.dengyi.myhome.servicedevice.service.DeviceService;
+import pro.dengyi.myhome.myhomemodel.business.device.DeviceCategory;
+import pro.dengyi.myhome.servicedevice.service.DeviceCategoryService;
+import pro.dengyi.myhome.servicedevice.vo.CategoryPageVo;
+
 
 /**
- * 设备controller
+ * 设备类型管理controller
  *
  * @author DengYi
  * @version v1.0
  */
 @RestController
-@RequestMapping("/device")
-@Api(tags = "设备接口")
-public class DeviceController {
+@RequestMapping("/deviceCategory")
+@Api(tags = "设备类型接口")
+public class DeviceCategoryController {
     @Autowired
-    private DeviceService deviceService;
+    private DeviceCategoryService deviceCategoryService;
 
 
     @ApiOperation("条件分页查询")
     @PostMapping("/page")
-    public DataResponse<Page<Device>> page(@RequestBody DevicePageVo vo) {
-        Page<Device> page = deviceService.page(vo);
+    public DataResponse<Page<DeviceCategory>> page(@RequestBody CategoryPageVo vo) {
+        Page<DeviceCategory> page = deviceCategoryService.page(vo);
         return new DataResponse<>(ResponseEnum.SUCCESS, page);
     }
 
-    @ApiOperation("发布设备")
-    @PostMapping("/publishDevice")
-    BaseResponse publishDevice(@RequestBody Device device) {
-        deviceService.publishDevice(device);
+    @ApiOperation("新增或修改")
+    @PostMapping("/addOrUpdate")
+    public BaseResponse addOrUpdate(@RequestBody DeviceCategory deviceCategory) {
+        deviceCategoryService.addOrUpdate(deviceCategory);
         return new BaseResponse(ResponseEnum.SUCCESS);
     }
 
-    @ApiOperation("新增设备")
-    @PostMapping("/device/addOrUpdateDevice")
-    BaseResponse addOrUpdateDevice(@RequestBody Device device) {
-        deviceService.addOrUpdateDevice(device);
+    @ApiOperation("删除分类")
+    @PostMapping("/delCategory")
+    public BaseResponse delCategory(@RequestBody DeviceCategory deviceCategory) {
+        deviceCategoryService.delCategory(deviceCategory);
         return new BaseResponse(ResponseEnum.SUCCESS);
     }
+
 }

@@ -68,6 +68,11 @@ public enum ResponseEnum {
     FEATURE_INFO_ERROR(false, 70013, "无法规划路径"),
     CARD_NUM_NOT_FOUND(false, 70013, "您好，本院未查询到您的就诊信息，无法绑定卡片"),
 
+    /**
+     * -------------设备相关------------------
+     */
+    CATEGORY_USED(false, 30001, "设备分类已被设备绑定，不能删除"),
+
     ;
 
 

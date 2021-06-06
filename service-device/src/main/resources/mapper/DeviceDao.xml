@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pro.dengyi.myhome.servicedevice.dao.DeviceDao">
+    <select id="customPage" resultType="pro.dengyi.myhome.myhomemodel.business.device.Device">
+        SELECT device.id,
+        device.`name`,
+        device.`online`,
+        device.icon_path,
+        device.family_id,
+        device.category_id,
+        device.device_secret,
+        device.create_time,
+        device.update_time,
+        device.publish,
+        device_category.type,
+        device_category.sub_type,
+        device_category.data_format
+        FROM device
+        INNER JOIN device_category ON device.category_id = device_category.id
+        WHERE 1 = 1
+        <if test="params.name !=null and params.name !='' ">
+            and device.name like concat ('%', #{params.name},'%')
+        </if>
+        <if test="params.online !=null ">
+            and device.online =#{params.online}
+        </if>
+        <if test="params.publish !=null ">
+            and device.publish =#{params.publish}
+        </if>
+
+    </select>
+</mapper>

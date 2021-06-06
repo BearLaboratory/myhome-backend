@@ -1,6 +1,8 @@
 package pro.dengyi.myhome.myhomemodel.business.device;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonRawValue;
 import io.swagger.annotations.ApiModel;
@@ -34,8 +36,8 @@ public class DeviceCategory {
     private Integer subType;
 
     @ApiModelProperty(value = "数据格式")
-    @JsonRawValue
-    private String dataFormat;
+    @TableField(typeHandler = JacksonTypeHandler.class)
+    private Object dataFormat;
 
     @ApiModelProperty(value = "创建时间")
     private Date createTime;

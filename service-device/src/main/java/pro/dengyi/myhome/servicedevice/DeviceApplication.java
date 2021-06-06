@@ -19,14 +19,14 @@ import org.springframework.context.annotation.ComponentScan;
                 "pro.dengyi.myhome.common",
                 "pro.dengyi.myhome.servicedevice"
         })
-@EntityScan(basePackages = {"com.palmap.frameworkmodel.ucenter"})
-@MapperScan(basePackages = {"com.palmap.serviceucenter.dao"})
+@EntityScan(basePackages = {"pro.dengyi.myhome.myhomemodel.business"})
+@MapperScan(basePackages = {"pro.dengyi.myhome.servicedevice.dao"})
 @EnableDiscoveryClient
 @EnableFeignClients
 @SpringBootApplication
-public class ServiceDeviceApplication {
+public class DeviceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ServiceDeviceApplication.class, args);
+        SpringApplication.run(DeviceApplication.class, args);
     }
 }

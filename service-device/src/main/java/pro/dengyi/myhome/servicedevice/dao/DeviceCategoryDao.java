@@ -1,4 +1,4 @@
-package pro.dengyi.myhome.servicebackend.dao;
+package pro.dengyi.myhome.servicedevice.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;

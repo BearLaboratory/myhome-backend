@@ -1,5 +1,5 @@
 server:
-  port: 8333
+  port: 9333
 spring:
   application:
     name: SERVICE-DEVICE

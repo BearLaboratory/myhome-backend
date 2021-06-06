@@ -1,6 +1,6 @@
 package pro.dengyi.myhome.servicebackend.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pro.dengyi.myhome.common.response.BaseResponse;
 import pro.dengyi.myhome.common.response.DataResponse;
-import pro.dengyi.myhome.common.response.ResponseEnum;
 import pro.dengyi.myhome.myhomemodel.business.device.DeviceCategory;
-import pro.dengyi.myhome.servicebackend.service.DeviceCategoryService;
+import pro.dengyi.myhome.servicebackend.apis.DeviceApi;
 import pro.dengyi.myhome.servicebackend.vo.CategoryPageVo;
 
 /**
@@ -26,21 +25,25 @@ import pro.dengyi.myhome.servicebackend.vo.CategoryPageVo;
 @Api(tags = "设备类型接口")
 public class DeviceCategoryController {
     @Autowired
-    private DeviceCategoryService deviceCategoryService;
+    private DeviceApi deviceApi;
 
 
     @ApiOperation("条件分页查询")
     @PostMapping("/page")
-    public DataResponse<IPage<DeviceCategory>> page(@RequestBody CategoryPageVo vo) {
-        IPage<DeviceCategory> iPage = deviceCategoryService.page(vo);
-        return new DataResponse<>(ResponseEnum.SUCCESS, iPage);
+    public DataResponse<Page<DeviceCategory>> page(@RequestBody CategoryPageVo vo) {
+        return deviceApi.conditionPage(vo);
     }
 
     @ApiOperation("新增或修改")
     @PostMapping("/addOrUpdate")
     public BaseResponse addOrUpdate(@RequestBody DeviceCategory deviceCategory) {
-        deviceCategoryService.addOrUpdate(deviceCategory);
-        return new BaseResponse(ResponseEnum.SUCCESS);
+        return deviceApi.addOrUpdateCategory(deviceCategory);
+    }
+
+    @ApiOperation("删除分类")
+    @PostMapping("/delCategory")
+    public BaseResponse delCategory(@RequestBody DeviceCategory deviceCategory) {
+        return deviceApi.delCategory(deviceCategory);
     }
 
 }
