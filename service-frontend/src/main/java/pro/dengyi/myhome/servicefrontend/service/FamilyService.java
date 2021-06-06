@@ -2,7 +2,7 @@ package pro.dengyi.myhome.servicefrontend.service;
 
 
 
-import pro.dengyi.myhome.myhomemodel.business.Family;
+import pro.dengyi.myhome.myhomemodel.business.frontend.Family;
 import pro.dengyi.myhome.servicefrontend.dto.FamilyListDto;
 
 import java.util.List;

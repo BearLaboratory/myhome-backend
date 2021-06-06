@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import pro.dengyi.myhome.common.response.BaseResponse;
 import pro.dengyi.myhome.common.response.DataResponse;
 import pro.dengyi.myhome.common.response.ResponseEnum;
-import pro.dengyi.myhome.myhomemodel.business.Room;
+import pro.dengyi.myhome.myhomemodel.business.frontend.Room;
 import pro.dengyi.myhome.servicefrontend.service.RoomService;
 
 

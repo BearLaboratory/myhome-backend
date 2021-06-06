@@ -1,7 +1,7 @@
 package pro.dengyi.myhome.servicefrontend.service;
 
 
-import pro.dengyi.myhome.myhomemodel.business.Device;
+import pro.dengyi.myhome.myhomemodel.business.device.Device;
 
 import java.util.List;
 

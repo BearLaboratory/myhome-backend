@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import pro.dengyi.myhome.common.exception.BusinessException;
 import pro.dengyi.myhome.common.response.ResponseEnum;
-import pro.dengyi.myhome.myhomemodel.business.Floor;
+import pro.dengyi.myhome.myhomemodel.business.frontend.Floor;
 import pro.dengyi.myhome.servicefrontend.dao.FloorDao;
 import pro.dengyi.myhome.servicefrontend.service.FloorService;
 

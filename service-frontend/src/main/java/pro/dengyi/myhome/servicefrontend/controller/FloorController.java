@@ -10,7 +10,7 @@ import pro.dengyi.myhome.common.exception.BusinessException;
 import pro.dengyi.myhome.common.response.BaseResponse;
 import pro.dengyi.myhome.common.response.DataResponse;
 import pro.dengyi.myhome.common.response.ResponseEnum;
-import pro.dengyi.myhome.myhomemodel.business.Floor;
+import pro.dengyi.myhome.myhomemodel.business.frontend.Floor;
 import pro.dengyi.myhome.servicefrontend.service.FloorService;
 
 

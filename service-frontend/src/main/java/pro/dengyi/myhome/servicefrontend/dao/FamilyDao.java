@@ -3,7 +3,7 @@ package pro.dengyi.myhome.servicefrontend.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import pro.dengyi.myhome.myhomemodel.business.Family;
+import pro.dengyi.myhome.myhomemodel.business.frontend.Family;
 import pro.dengyi.myhome.servicefrontend.dto.FamilyListDto;
 
 

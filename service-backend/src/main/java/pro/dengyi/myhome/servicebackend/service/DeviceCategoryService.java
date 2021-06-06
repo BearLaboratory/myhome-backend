@@ -1,7 +1,7 @@
 package pro.dengyi.myhome.servicebackend.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import pro.dengyi.myhome.myhomemodel.business.DeviceCategory;
+import pro.dengyi.myhome.myhomemodel.business.device.DeviceCategory;
 import pro.dengyi.myhome.servicebackend.vo.CategoryPageVo;
 
 /**

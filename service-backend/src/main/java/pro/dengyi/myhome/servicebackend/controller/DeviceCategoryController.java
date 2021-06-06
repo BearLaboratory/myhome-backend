@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.dengyi.myhome.common.response.BaseResponse;
 import pro.dengyi.myhome.common.response.DataResponse;
 import pro.dengyi.myhome.common.response.ResponseEnum;
-import pro.dengyi.myhome.myhomemodel.business.DeviceCategory;
+import pro.dengyi.myhome.myhomemodel.business.device.DeviceCategory;
 import pro.dengyi.myhome.servicebackend.service.DeviceCategoryService;
 import pro.dengyi.myhome.servicebackend.vo.CategoryPageVo;
 

@@ -1,4 +1,4 @@
-package pro.dengyi.myhome.myhomemodel.business;
+package pro.dengyi.myhome.myhomemodel.business.device;
 
 
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -16,7 +16,7 @@ import java.util.Date;
  * @author BLab
  */
 @Data
-@TableName("t_device")
+@TableName("device")
 @ApiModel("设备")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Device {
@@ -57,7 +57,7 @@ public class Device {
     private Boolean publish;
 
     @ApiModelProperty(value = "所属分类ID")
-    private String productId;
+    private String categoryId;
 
     @ApiModelProperty(value = "开发者ID")
     private String developerId;

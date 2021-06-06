@@ -1,10 +1,8 @@
 server:
   port: 8333
-  servlet:
-    context-path: /admin/ucenter
 spring:
   application:
-    name: SERVICE-UCENTER
+    name: SERVICE-DEVICE
   profiles:
     active: dev
 management:

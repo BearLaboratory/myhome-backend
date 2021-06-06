@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pro.dengyi.myhome.myhomemodel.business.Room;
+import pro.dengyi.myhome.myhomemodel.business.frontend.Room;
 import pro.dengyi.myhome.servicefrontend.dao.RoomDao;
 import pro.dengyi.myhome.servicefrontend.service.RoomService;
 

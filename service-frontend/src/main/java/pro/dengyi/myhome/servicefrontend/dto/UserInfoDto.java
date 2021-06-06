@@ -1,8 +1,8 @@
 package pro.dengyi.myhome.servicefrontend.dto;
 
 import lombok.Data;
-import pro.dengyi.myhome.myhomemodel.business.Family;
-import pro.dengyi.myhome.myhomemodel.business.User;
+import pro.dengyi.myhome.myhomemodel.business.frontend.Family;
+import pro.dengyi.myhome.myhomemodel.business.frontend.User;
 
 
 /**

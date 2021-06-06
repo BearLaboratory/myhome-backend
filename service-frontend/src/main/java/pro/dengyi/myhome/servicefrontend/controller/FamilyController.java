@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import pro.dengyi.myhome.common.response.BaseResponse;
 import pro.dengyi.myhome.common.response.DataResponse;
 import pro.dengyi.myhome.common.response.ResponseEnum;
-import pro.dengyi.myhome.myhomemodel.business.Family;
+import pro.dengyi.myhome.myhomemodel.business.frontend.Family;
 import pro.dengyi.myhome.servicefrontend.dto.FamilyListDto;
 import pro.dengyi.myhome.servicefrontend.service.FamilyService;
 

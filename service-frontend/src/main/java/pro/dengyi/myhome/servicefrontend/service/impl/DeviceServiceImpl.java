@@ -1,17 +1,13 @@
 package pro.dengyi.myhome.servicefrontend.service.impl;
 
-import com.alibaba.fastjson.JSON;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pro.dengyi.myhome.common.exception.BusinessException;
 import pro.dengyi.myhome.common.response.ResponseEnum;
-import pro.dengyi.myhome.myhomemodel.business.Device;
-import pro.dengyi.myhome.myhomemodel.business.Product;
+import pro.dengyi.myhome.myhomemodel.business.device.Device;
 import pro.dengyi.myhome.servicefrontend.dao.DeviceDao;
-import pro.dengyi.myhome.servicefrontend.dao.ProductDao;
 import pro.dengyi.myhome.servicefrontend.service.DeviceService;
 
 
@@ -28,9 +24,6 @@ public class DeviceServiceImpl implements DeviceService {
     private DeviceDao deviceDao;
     @Autowired
     private RedisTemplate redisTemplate;
-    @Autowired
-    private ProductDao productDao;
-
     @Override
     public List<Device> listByRoomId(String familyId, String roomId, Boolean favorite) {
         HashMap<String, Object> params = new HashMap<>(3);
@@ -77,7 +70,6 @@ public class DeviceServiceImpl implements DeviceService {
         deviceDao.updateById(deviceSaved);
         deviceOrder.put("deviceId", deviceSaved.getId());
         //todo 发送控制报文
-        Product product = productDao.selectById(deviceSaved.getProductId());
 //        PubRequest request = new PubRequest();
 //        request.setProductKey(product.getProductKey());
 //        request.setMessageContent(Base64.encodeBase64String(JSON.toJSONString(deviceOrder).getBytes()));

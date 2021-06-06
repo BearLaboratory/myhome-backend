@@ -90,6 +90,13 @@
             <groupId>com.aliyun.openservices</groupId>
             <artifactId>aliyun-log-logback-appender</artifactId>
         </dependency>
+        <!--MySQL驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+
     </dependencies>
 
     <build>
