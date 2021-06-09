@@ -44,9 +44,16 @@ public class DeviceController {
     }
 
     @ApiOperation("新增设备")
-    @PostMapping("/device/addOrUpdateDevice")
+    @PostMapping("/addOrUpdateDevice")
     BaseResponse addOrUpdateDevice(@RequestBody Device device) {
         deviceService.addOrUpdateDevice(device);
+        return new BaseResponse(ResponseEnum.SUCCESS);
+    }
+
+    @ApiOperation("控制设备设备")
+    @PostMapping("/controlDevice")
+    BaseResponse controlDevice(@RequestBody Device device) {
+        deviceService.controlDevice(device);
         return new BaseResponse(ResponseEnum.SUCCESS);
     }
 }

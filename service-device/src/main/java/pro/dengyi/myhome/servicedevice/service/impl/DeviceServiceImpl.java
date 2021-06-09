@@ -55,4 +55,11 @@ public class DeviceServiceImpl implements DeviceService {
             deviceDao.updateById(device);
         }
     }
+
+    @Override
+    public void controlDevice(Device device) {
+        //1. 判断设备类型，只有控制型才能控制
+        //2. 判断设备是否在线，在线才能控制
+        //3. 判断设备类型，针对性的下发控制
+    }
 }

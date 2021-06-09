@@ -25,4 +25,6 @@ public interface DeviceService {
      * @param device
      */
     void addOrUpdateDevice(Device device);
+
+    void controlDevice(Device device);
 }
