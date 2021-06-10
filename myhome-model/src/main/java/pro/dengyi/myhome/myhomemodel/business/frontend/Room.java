@@ -31,6 +31,9 @@ public class Room {
     @ApiModelProperty(value = "家庭ID")
     private String familyId;
 
+    @ApiModelProperty(value = "设备总数")
+    private Integer deviceCount;
+
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
 

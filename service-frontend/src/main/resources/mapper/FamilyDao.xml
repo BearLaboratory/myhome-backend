@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pro.dengyi.myhome.servicefrontend.dao.FamilyDao">
+    <select id="selectFamilyListByUserId" resultType="pro.dengyi.myhome.myhomemodel.business.frontend.Family">
+        SELECT family.id,
+               family.`name`,
+               family.create_time,
+               family.update_time,
+               family.province,
+               family.city,
+               family.district,
+               family.street,
+               family.city_code,
+               family.floor_count,
+               family.room_count,
+               family.device_count
+        FROM family
+                 INNER JOIN family_user_middle ON family.id = family_user_middle.family_id
+        WHERE family_user_middle.user_id = #{userId}
+    </select>
+</mapper>

@@ -28,18 +28,23 @@ public class Family {
     private String name;
 
     @ApiModelProperty(value = "省")
+    @NotBlank
     private String province;
 
     @ApiModelProperty(value = "市")
+    @NotBlank
     private String city;
 
     @ApiModelProperty(value = "区")
+    @NotBlank
     private String district;
 
     @ApiModelProperty(value = "街道")
+    @NotBlank
     private String street;
 
     @ApiModelProperty(value = "城市编码")
+    @NotBlank
     private String cityCode;
 
     @ApiModelProperty(value = "创建时间")
@@ -47,5 +52,14 @@ public class Family {
 
     @ApiModelProperty(value = "更新时间")
     private Date updateTime;
+
+    @ApiModelProperty(value = "楼层总数")
+    private Integer floorCount;
+
+    @ApiModelProperty(value = "房间总数")
+    private Integer roomCount;
+
+    @ApiModelProperty(value = "设备总数")
+    private Integer deviceCount;
 
 }

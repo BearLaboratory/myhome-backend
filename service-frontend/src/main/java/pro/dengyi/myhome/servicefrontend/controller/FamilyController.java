@@ -9,7 +9,6 @@ import pro.dengyi.myhome.common.response.BaseResponse;
 import pro.dengyi.myhome.common.response.DataResponse;
 import pro.dengyi.myhome.common.response.ResponseEnum;
 import pro.dengyi.myhome.myhomemodel.business.frontend.Family;
-import pro.dengyi.myhome.servicefrontend.dto.FamilyListDto;
 import pro.dengyi.myhome.servicefrontend.service.FamilyService;
 
 import java.util.List;
@@ -33,8 +32,8 @@ public class FamilyController {
 
     @ApiOperation("查询用户所有家庭列表")
     @GetMapping("/familyList")
-    public DataResponse<List<FamilyListDto>> familyList() {
-        List<FamilyListDto> familyList = familyService.familyList();
+    public DataResponse<List<Family>> familyList() {
+        List<Family> familyList = familyService.familyList();
         return new DataResponse<>(ResponseEnum.SUCCESS, familyList);
     }
 

@@ -1,5 +1,6 @@
 package pro.dengyi.myhome.servicefrontend.service.impl;
 
+import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
@@ -48,7 +49,7 @@ public class ValidCodeServiceImpl implements ValidCodeService {
         }
         //调用阿里云发送验证码
         JSONObject validCodeContent = new JSONObject();
-        String realCode = "123456";
+        String realCode = RandomUtil.randomNumbers(4);
         validCodeContent.put("code", realCode);
         try {
             SendSmsResponse sendSmsResponse = SmsUtil.sendSms(dayuProperties.getAccessKeyId(), dayuProperties.getAccessKeySecret(), phoneString, dayuProperties.getSignName(), dayuProperties.getTemplateCode(), validCodeContent.toString());

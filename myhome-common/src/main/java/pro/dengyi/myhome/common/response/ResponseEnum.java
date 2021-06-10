@@ -40,7 +40,7 @@ public enum ResponseEnum {
     /**
      * ----------------------维护系统微服务12------------------------
      */
-    DEVICE_NOT_ONLINE(false, 12001, "设备已离线"),
+    //DEVICE_NOT_ONLINE(false, 12001, "设备已离线"),
     OPT_FLOW_LIMIT(false, 12002, "对设备操作太频繁，请稍后重试"),
 
 
@@ -72,6 +72,8 @@ public enum ResponseEnum {
      * -------------设备相关------------------
      */
     CATEGORY_USED(false, 30001, "设备分类已被设备绑定，不能删除"),
+    DEVICE_TYPE_CAN_NOT_CONTROL(false, 30001, "设备类型不支持下发控制命令"),
+    DEVICE_NOT_ONLINE(false, 30002, "设备不在线,不能下发控制命令"),
 
     ;
 

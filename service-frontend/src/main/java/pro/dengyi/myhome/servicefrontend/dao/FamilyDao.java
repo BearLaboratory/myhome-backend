@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import pro.dengyi.myhome.myhomemodel.business.frontend.Family;
 import pro.dengyi.myhome.servicefrontend.dto.FamilyListDto;
 
-
 import java.util.List;
 import java.util.Map;
 
@@ -23,4 +22,11 @@ public interface FamilyDao extends BaseMapper<Family> {
      */
     List<FamilyListDto> selectFamilyList(@Param("param") Map<String, String> param);
 
+    /**
+     * 根据用户ID查询用户所有绑定的家庭
+     *
+     * @param userId
+     * @return
+     */
+    List<Family> selectFamilyListByUserId(@Param("userId") String userId);
 }

@@ -23,7 +23,7 @@ public interface FamilyService {
      *
      * @return
      */
-    List<FamilyListDto> familyList();
+    List<Family> familyList();
 
     /**
      * 同意加入家庭
