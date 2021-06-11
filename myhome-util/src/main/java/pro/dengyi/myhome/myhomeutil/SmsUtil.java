@@ -7,14 +7,12 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * 发送短信工具类
  *
  * @author BLab
  */
-@Slf4j
 public class SmsUtil {
 
     private static final String PRODUCT = "Dysmsapi";
@@ -49,10 +47,8 @@ public class SmsUtil {
 
         // hint 此处可能会抛出异常，注意catch
         SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);
-        if (sendSmsResponse.getCode() != null && "OK".equals(sendSmsResponse.getCode())) {
-            log.info("通知短信发送成功");
-        } else {
-            log.error("通知短信发送失败");
+        if (sendSmsResponse.getCode() == null || !"OK".equals(sendSmsResponse.getCode())) {
+            throw new RuntimeException("验证短信发送失败");
         }
         return sendSmsResponse;
     }

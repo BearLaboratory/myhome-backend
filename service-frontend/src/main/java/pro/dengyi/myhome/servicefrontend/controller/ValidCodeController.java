@@ -13,8 +13,6 @@ import pro.dengyi.myhome.common.response.ResponseEnum;
 import pro.dengyi.myhome.myhomeutil.PhoneUtil;
 import pro.dengyi.myhome.servicefrontend.service.ValidCodeService;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
  * 验证码controller
  *
@@ -30,11 +28,11 @@ public class ValidCodeController {
 
     @ApiOperation("通过手机号获取验证码")
     @GetMapping("/getCodeByPhone")
-    public BaseResponse getCodeByPhone(String phoneString, HttpServletRequest request) {
+    public BaseResponse getCodeByPhone(String phoneString) {
         if (StringUtils.isBlank(phoneString) || !PhoneUtil.isLegalPhone(phoneString)) {
             throw new BusinessException(ResponseEnum.PARAM_ERROR);
         }
-        validCodeService.getCodeByPhone(phoneString, request);
+        validCodeService.getCodeByPhone(phoneString);
         return new BaseResponse(ResponseEnum.SUCCESS);
     }
 
