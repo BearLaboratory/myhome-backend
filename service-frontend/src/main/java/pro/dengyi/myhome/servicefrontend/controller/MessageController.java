@@ -20,7 +20,7 @@ import java.util.List;
 @Api(tags = "消息接口")
 @RestController
 @RequestMapping("/message")
-public class MessageLogController {
+public class MessageController {
     @Autowired
     private MessageLogService messageLogService;
 
