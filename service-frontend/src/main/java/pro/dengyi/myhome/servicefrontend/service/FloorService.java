@@ -23,5 +23,14 @@ public interface FloorService {
      * @param familyId 家庭ID
      * @return List<Floor>
      */
-    List<Floor> list(String familyId);
+    List<Floor> listByFamilyId(String familyId);
+
+    /**
+     * 删除楼层
+     * <p>
+     * 如果楼层下有房间则不能删除
+     *
+     * @param floor 楼层
+     */
+    void deleteFloor(Floor floor);
 }

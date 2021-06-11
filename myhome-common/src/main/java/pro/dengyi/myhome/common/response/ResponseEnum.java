@@ -49,25 +49,11 @@ public enum ResponseEnum {
      */
     APK_EXIST(false, 13001, "APK已存在"),
 
-    /**
-     * AI_SCREEN 异常信息配置
-     */
-    READER_CONFIG_NOT_EXIST(false, 70000, "该医院未配置"),
-    SCREEN_NOT_FOUND(false, 70001, "找不到对应的设备或设备配置项为空"),
-    UPLOAD_FILE_IS_NULL(false, 70002, "上传文件不能为空"),
-    FILE_OVER_MAXIMUM(false, 70003, "图片大小超过限制, 最大允许"),
-    ILLEGAL_CHARACTER(false, 70004, "包含非法字符"),
-    APK_NOT_FOUND(false, 70005, "未找到可用安装包"),
-    REPEAT_UPLOAD(false, 70006, "该版本已存在, 请修改版本后再试"),
-    HIS_OPEN_ID_CARD_NUM_NOT_FOUND(false, 70007, "hisOpenId 与 cardNum 不可同时为空!"),
-    CARD_HAS_BIND_ERROR(false, 70008, "该卡已被绑定!"),
-    TASK_ID_NOT_FOUND(false, 70009, "未知TASK ID!"),
-    SCREEN_LOCATION_NOT_FOUND(false, 70010, "该设备未配置位置信息, 无法计算路径"),
-    FEATURE_ID_MAPPING_ERROR(false, 70011, "医院科室至图聚featureId映射失败, 无法计算路径"),
-    END_FEATURE_INFO_NOT_FOUND(false, 70012, "无终点信息, 无法计算路径"),
-    FEATURE_INFO_ERROR(false, 70013, "无法规划路径"),
-    CARD_NUM_NOT_FOUND(false, 70013, "您好，本院未查询到您的就诊信息，无法绑定卡片"),
 
+    /**
+     * --------------------------家庭、楼层、房间-----------
+     */
+    HAVA_SUB_ROOMS(false, 14001, "楼层下还存在着房间，无法删除"),
     /**
      * -------------设备相关------------------
      */

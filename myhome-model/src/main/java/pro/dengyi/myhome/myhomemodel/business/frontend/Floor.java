@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Date;
  * @author BLab
  */
 @Data
-@TableName("t_floor")
+@TableName("floor")
 @ApiModel("楼层")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Floor {
@@ -23,9 +24,11 @@ public class Floor {
     private String id;
 
     @ApiModelProperty(value = "楼层名")
+    @NotBlank
     private String name;
 
     @ApiModelProperty(value = "家庭ID")
+    @NotBlank
     private String familyId;
 
     @ApiModelProperty(value = "房间总数")
