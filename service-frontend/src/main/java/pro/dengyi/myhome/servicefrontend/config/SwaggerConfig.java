@@ -41,7 +41,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .globalOperationParameters(parameters)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.palmap.serviceucenter.controller"))
+                .apis(RequestHandlerSelectors.basePackage("pro.dengyi.myhome.servicefrontend.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }

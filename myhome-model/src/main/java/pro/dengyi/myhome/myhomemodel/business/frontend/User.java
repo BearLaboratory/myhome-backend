@@ -10,7 +10,7 @@ import lombok.Data;
  * @author BLab
  */
 @Data
-@TableName("t_user")
+@TableName("user")
 @ApiModel("用户")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
@@ -44,4 +44,7 @@ public class User {
 
     @ApiModelProperty(value = "选择的楼层ID")
     private String selectedFloorId;
+
+
+
 }

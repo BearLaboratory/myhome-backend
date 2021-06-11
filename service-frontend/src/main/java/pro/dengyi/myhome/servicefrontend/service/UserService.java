@@ -4,12 +4,32 @@ package pro.dengyi.myhome.servicefrontend.service;
 import pro.dengyi.myhome.servicefrontend.dto.UserInfoDto;
 import pro.dengyi.myhome.servicefrontend.vo.PhoneLoginVo;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
  * @author BLab
  */
 public interface UserService {
+
+    /**
+     * 手机号验证码登录系统
+     * <p>
+     * 如果新用户则将用户手机号新增至系统然后返回
+     * 如果是老用户则直接登录
+     *
+     * @param vo 登录实体
+     * @return
+     */
+    String loginByPhone(PhoneLoginVo vo);
+
+    /**
+     * 查询用户的基本信息
+     *
+     * 基本信息包括用户个人信息
+     *
+     * @return
+     */
+    UserInfoDto getUserInfo();
+
+
 //    /**
 //     * 根据手机号查询用户是否存在
 //     *
@@ -71,20 +91,6 @@ public interface UserService {
 //     */
 //    Boolean getHaveNotRead();
 
-    /**
-     * 手机号验证码登录
-     *
-     * @param vo
-     * @param request
-     * @return
-     */
-    String loginByPhone(PhoneLoginVo vo, HttpServletRequest request);
 
 
-    /**
-     * 查询用户信息
-     *
-     * @return
-     */
-    UserInfoDto getUserInfo();
 }

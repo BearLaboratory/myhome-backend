@@ -12,8 +12,6 @@ import pro.dengyi.myhome.servicefrontend.dto.UserInfoDto;
 import pro.dengyi.myhome.servicefrontend.service.UserService;
 import pro.dengyi.myhome.servicefrontend.vo.PhoneLoginVo;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
  * @author BLab
  */
@@ -26,8 +24,8 @@ public class UserController {
 
     @ApiOperation("手机号验证码登录——系统唯一支持登录方式是手机号验证码登录")
     @PostMapping("/loginByPhone")
-    public DataResponse<String> loginByPhone(@RequestBody @Validated PhoneLoginVo vo, HttpServletRequest request) {
-        String token = userService.loginByPhone(vo, request);
+    public DataResponse<String> loginByPhone(@RequestBody @Validated PhoneLoginVo vo) {
+        String token = userService.loginByPhone(vo);
         return new DataResponse<>(ResponseEnum.SUCCESS, token);
     }
 
