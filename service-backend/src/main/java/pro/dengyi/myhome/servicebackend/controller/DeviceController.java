@@ -31,7 +31,6 @@ public class DeviceController {
     private DeviceService deviceService;
 
 
-
     @ApiOperation("条件分页查询")
     @PostMapping("/page")
     public DataResponse<Page<Device>> page(@RequestBody DevicePageVo vo) {

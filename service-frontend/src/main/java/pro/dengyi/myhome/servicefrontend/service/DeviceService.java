@@ -31,7 +31,7 @@ public interface DeviceService {
      *
      * @param device
      */
-    void doControl(Device device) ;
+    void doControl(Device device);
 
     /**
      * 用户添加设备

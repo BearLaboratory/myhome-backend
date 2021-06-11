@@ -5,11 +5,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import pro.dengyi.myhome.myhomeutil.SysUserTokenUtil;
-import pro.dengyi.myhome.myhomeutil.UserTokenUtil;
 import pro.dengyi.myhome.myhomeutil.holder.SysUserHolder;
 import pro.dengyi.myhome.myhomeutil.holder.SysUserHolderModel;
-import pro.dengyi.myhome.myhomeutil.holder.UserHolder;
-import pro.dengyi.myhome.myhomeutil.holder.UserHolderModel;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

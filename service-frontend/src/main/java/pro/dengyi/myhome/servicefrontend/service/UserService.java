@@ -22,7 +22,7 @@ public interface UserService {
 
     /**
      * 查询用户的基本信息
-     *
+     * <p>
      * 基本信息包括用户个人信息
      *
      * @return
@@ -90,7 +90,6 @@ public interface UserService {
 //     * @return
 //     */
 //    Boolean getHaveNotRead();
-
 
 
 }

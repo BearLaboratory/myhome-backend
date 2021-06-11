@@ -27,6 +27,7 @@ import pro.dengyi.myhome.servicefrontend.vo.PhoneLoginVo;
  */
 @Service
 public class UserServiceImpl implements UserService {
+    private static final String DEFAULT_AVATAR = "https://image.dengyi.pro/dengyi/1613733826939384.jpg";
     @Autowired
     private UserDao userDao;
     @Autowired
@@ -37,9 +38,6 @@ public class UserServiceImpl implements UserService {
     private MessageLogDao messageLogDao;
     @Autowired
     private RedisTemplate redisTemplate;
-
-    private static final String DEFAULT_AVATAR = "https://image.dengyi.pro/dengyi/1613733826939384.jpg";
-
 
     @Override
     public String loginByPhone(PhoneLoginVo vo) {

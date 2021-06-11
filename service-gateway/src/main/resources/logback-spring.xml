@@ -45,7 +45,7 @@
             <timeZone>UTC</timeZone>
         </appender>
 
-        <logger name="org.springframework" level="WARN" />
+        <logger name="org.springframework" level="WARN"/>
 
         <root level="WARN">
             <appender-ref ref="aliyun"/>
@@ -75,7 +75,7 @@
             </encoder>
         </appender>
 
-        <logger name="org.springframework" level="WARN" />
+        <logger name="org.springframework" level="WARN"/>
 
         <root level="WARN">
             <appender-ref ref="FILE"/>

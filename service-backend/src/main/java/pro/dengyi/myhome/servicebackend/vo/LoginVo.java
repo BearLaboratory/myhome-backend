@@ -16,10 +16,10 @@ import javax.validation.constraints.NotBlank;
 public class LoginVo {
 
     @NotBlank
-    @Length(min = 11,max = 11)
+    @Length(min = 11, max = 11)
     private String phone;
 
     @NotBlank
-    @Length(min = 8,max = 10)
+    @Length(min = 8, max = 10)
     private String password;
 }

@@ -39,13 +39,13 @@ import java.util.List;
 @Slf4j
 @Service
 public class UserServiceImpl implements UserService {
+    private static final String DEFAULT_AVATAR = "https://image.dengyi.pro/dengyi/1613733826939384.jpg";
     @Autowired
     private UserDao sysUserDao;
     @Autowired
     private PermissionDao permissionDao;
     @Autowired
     private UserRoleMiddleDao sysUserRoleMiddleDao;
-    private static final String DEFAULT_AVATAR = "https://image.dengyi.pro/dengyi/1613733826939384.jpg";
 
     @Transactional
     @Override

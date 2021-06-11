@@ -99,7 +99,8 @@
         ORDER BY sys_permission.order_no ASC
     </select>
 
-    <select id="selectFirstButtonPermissionByUserId" resultType="pro.dengyi.myhome.myhomemodel.business.backend.Permission">
+    <select id="selectFirstButtonPermissionByUserId"
+            resultType="pro.dengyi.myhome.myhomemodel.business.backend.Permission">
         SELECT sys_permission.id,
                sys_permission.permission_name,
                sys_permission.router_path,

@@ -10,7 +10,6 @@ import pro.dengyi.myhome.myhomemodel.business.device.Device;
 import pro.dengyi.myhome.servicefrontend.dao.DeviceDao;
 import pro.dengyi.myhome.servicefrontend.service.DeviceService;
 
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +23,7 @@ public class DeviceServiceImpl implements DeviceService {
     private DeviceDao deviceDao;
     @Autowired
     private RedisTemplate redisTemplate;
+
     @Override
     public List<Device> listByRoomId(String familyId, String roomId, Boolean favorite) {
         HashMap<String, Object> params = new HashMap<>(3);

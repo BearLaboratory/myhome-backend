@@ -1,6 +1,5 @@
 package pro.dengyi.myhome.servicedevice.service;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import pro.dengyi.myhome.myhomemodel.business.device.DeviceCategory;
 import pro.dengyi.myhome.servicedevice.vo.CategoryPageVo;
