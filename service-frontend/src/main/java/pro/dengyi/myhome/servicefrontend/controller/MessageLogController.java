@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * @author BLab
  */
-@Api(tags = "楼层")
+@Api(tags = "消息接口")
 @RestController
 @RequestMapping("/message")
 public class MessageLogController {

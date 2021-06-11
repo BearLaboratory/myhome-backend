@@ -16,7 +16,7 @@ import pro.dengyi.myhome.servicefrontend.service.FileService;
 /**
  * @author BLab
  */
-@Api(tags = "文件")
+@Api(tags = "文件接口")
 @RestController
 @RequestMapping("/file")
 public class FileController {

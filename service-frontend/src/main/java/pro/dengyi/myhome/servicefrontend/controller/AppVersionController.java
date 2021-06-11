@@ -16,7 +16,7 @@ import pro.dengyi.myhome.servicefrontend.service.AppVersionService;
 /**
  * @author BLab
  */
-@Api(tags = "app版本")
+@Api(tags = "apk接口")
 @RestController
 @RequestMapping("/appVersion")
 public class AppVersionController {

@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * @author BLab
  */
-@Api(tags = "设备")
+@Api(tags = "设备接口")
 @RestController
 @RequestMapping("/device")
 public class DeviceController {
