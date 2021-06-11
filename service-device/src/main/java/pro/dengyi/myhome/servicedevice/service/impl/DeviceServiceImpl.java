@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import pro.dengyi.myhome.common.exception.BusinessException;
 import pro.dengyi.myhome.common.response.ResponseEnum;
 import pro.dengyi.myhome.myhomemodel.business.device.Device;
@@ -97,6 +98,7 @@ public class DeviceServiceImpl implements DeviceService {
         sendCommand2Device(device.getId(), "");
     }
 
+
     /**
      * 向设备发送控制命令
      *
@@ -106,5 +108,12 @@ public class DeviceServiceImpl implements DeviceService {
     private void sendCommand2Device(String deviceId, String commandContent) {
         //todo 向设备下发控制报文
 
+    }
+
+
+    @Override
+    public Boolean roomContainDevices(String roomId) {
+        List<Device> devices = deviceDao.selectList(new LambdaQueryWrapper<Device>().eq(Device::getRoomId, roomId));
+        return CollectionUtils.isEmpty(devices);
     }
 }

@@ -32,4 +32,12 @@ public interface RoomService {
      */
     List<Room> listAllByFamilyId(String familyId);
 
+    /**
+     * 删除房间
+     * <p>
+     * 当房间下无设备时才能删除房间
+     *
+     * @param room
+     */
+    void deleteRoom(Room room);
 }

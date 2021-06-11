@@ -27,4 +27,13 @@ public interface DeviceService {
     void addOrUpdateDevice(Device device);
 
     void controlDevice(Device device);
+
+    /**
+     * 根据房间ID查询是否有设备
+     *
+     * @param roomId
+     * @return
+     */
+    Boolean roomContainDevices(String roomId);
+
 }

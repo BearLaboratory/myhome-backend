@@ -38,22 +38,28 @@ public class DeviceController {
 
     @ApiOperation("发布设备")
     @PostMapping("/publishDevice")
-    BaseResponse publishDevice(@RequestBody Device device) {
+    public BaseResponse publishDevice(@RequestBody Device device) {
         deviceService.publishDevice(device);
         return new BaseResponse(ResponseEnum.SUCCESS);
     }
 
     @ApiOperation("新增设备")
     @PostMapping("/addOrUpdateDevice")
-    BaseResponse addOrUpdateDevice(@RequestBody Device device) {
+    public BaseResponse addOrUpdateDevice(@RequestBody Device device) {
         deviceService.addOrUpdateDevice(device);
         return new BaseResponse(ResponseEnum.SUCCESS);
     }
 
     @ApiOperation("控制设备设备")
     @PostMapping("/controlDevice")
-    BaseResponse controlDevice(@RequestBody Device device) {
+    public BaseResponse controlDevice(@RequestBody Device device) {
         deviceService.controlDevice(device);
         return new BaseResponse(ResponseEnum.SUCCESS);
+    }
+
+    @ApiOperation("根据房间ID查询是否包含设备")
+    @PostMapping("/roomContainDevices")
+    public Boolean roomContainDevices(String roomId) {
+        return deviceService.roomContainDevices(roomId);
     }
 }

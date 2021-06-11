@@ -53,6 +53,7 @@ public class Device {
     @ApiModelProperty(value = "所属房间ID")
     private String roomId;
 
+
     @ApiModelProperty(value = "所属房间ID")
     private String familyId;
 
