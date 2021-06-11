@@ -14,7 +14,7 @@ import java.util.Date;
  * @author BLab
  */
 @Data
-@TableName("t_family")
+@TableName("family")
 @ApiModel("家庭")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Family {

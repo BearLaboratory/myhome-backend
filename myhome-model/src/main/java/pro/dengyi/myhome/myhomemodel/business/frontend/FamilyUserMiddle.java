@@ -10,8 +10,8 @@ import lombok.Data;
  * @author BLab
  */
 @Data
-@TableName("t_family_user_middle")
-@ApiModel("家庭")
+@TableName("family_user_middle")
+@ApiModel("家庭用户关联")
 public class FamilyUserMiddle {
 
     @ApiModelProperty(value = "ID")

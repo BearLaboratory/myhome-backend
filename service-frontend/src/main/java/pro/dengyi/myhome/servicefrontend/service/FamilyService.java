@@ -38,5 +38,5 @@ public interface FamilyService {
      * @param familyId 家庭ID
      * @return
      */
-    Boolean checkIsHoler(String familyId);
+    Boolean checkIsHolder(String familyId);
 }

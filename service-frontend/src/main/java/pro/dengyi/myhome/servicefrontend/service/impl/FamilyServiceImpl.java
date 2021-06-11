@@ -1,7 +1,6 @@
 package pro.dengyi.myhome.servicefrontend.service.impl;
 
 
-import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,8 +56,6 @@ public class FamilyServiceImpl implements FamilyService {
             middle.setIsHolder(true);
             middle.setUserId(userId);
             familyUserMiddleDao.insert(middle);
-            //3. 新增缓存
-            redisTemplate.opsForValue().set("family::" + family.getId(), JSON.toJSONString(family));
         } else {
             //1. 修改
             Family familySaved = familyDao.selectById(family.getId());
@@ -74,9 +71,7 @@ public class FamilyServiceImpl implements FamilyService {
     @Override
     public List<Family> familyList() {
         String userId = UserHolder.getUserId();
-        List<Family> familyList = familyDao.selectFamilyListByUserId(userId);
-        return familyList;
-
+        return familyDao.selectFamilyListByUserId(userId);
     }
 
     @Transactional
@@ -104,7 +99,7 @@ public class FamilyServiceImpl implements FamilyService {
     }
 
     @Override
-    public Boolean checkIsHoler(String familyId) {
+    public Boolean checkIsHolder(String familyId) {
         String userId = UserHolder.getUserId();
         QueryWrapper<FamilyUserMiddle> qr = new QueryWrapper<>();
         qr.eq("user_id", userId);
